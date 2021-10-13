@@ -39,8 +39,28 @@ public class FirstTest {
         //Нажимаем кнопку "В кошик"
         driver.findElement(By.xpath("//button[@data-qa-node='submit']")).click();
 
+        //Проверка коректности предзаполненных данных ввода мобильного номера телефона
+        By dataQaNodeDetails = By.xpath("//span[@data-qa-node='details']");
+        Assert.assertEquals("Поповнення телефону. На номер +380637086360",driver.findElement(dataQaNodeDetails).getText());
+
+        //Проверка коректности предзаполненных данных ввода номера карты
+        By dataQaNodeCard = By.xpath("//td[@data-qa-node='card']");
+        Assert.assertEquals("5309 **** **** 5085",driver.findElement(dataQaNodeCard).getText());
+
+        //Проверка оператора мобильной связи
+        By LifecelUkraine = By.xpath("//td[@class='sc-bmyXtO iKQEMo receiver_j8X5PN7XJD']");
+        Assert.assertEquals("Lifecell Ukraine",driver.findElement(LifecelUkraine).getText());
+
+        //Проверка суммы пополнения
+        By dataQaNodeAmount = By.xpath("//span[@data-qa-node='amount']");
+        Assert.assertEquals("1",driver.findElement(dataQaNodeAmount).getText());
+
+        //Проверка суммы комисии
+        By dataQaNodeCommission = By.xpath("//span[@data-qa-node='commission']");
+        Assert.assertEquals("2",driver.findElement(dataQaNodeCommission).getText());
+
         //Нажимаем кнопку "Підтвердити"
         driver.findElement(By.xpath("(//button[@class='sc-VigVT cQOKFU'])[2]")).click();
-        
+
     }
 }
